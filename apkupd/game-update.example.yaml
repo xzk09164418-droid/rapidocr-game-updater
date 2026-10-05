@@ -1,0 +1,169 @@
+# Copy to the corresponding .yaml file and configure your own paths.
+version: 1
+sliding_ocr:
+  enabled: true
+  grids:
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  overlap: 0.8
+  min_crop_width: 800
+  max_seconds: null
+runtime:
+  close_launcher_on_success: false
+  log_dir: logs
+  report_file: logs/latest-report.json
+  min_free_gb: 80
+  skip_when_game_running: true
+  dry_run_by_default: false
+notifications:
+  serverchan3:
+    failures_only: true
+    enabled: false
+    sendkey: ''
+    sendkey_env: SERVERCHAN_SENDKEY
+    tags: 游戏更新
+    notify_when_no_change: false
+    retry_after_seconds: 60
+    max_per_run: 3
+launchers:
+- id: hoyoplay
+  name: HoYoPlay（原神 / 崩铁 / 绝区零 / 崩坏3）
+  executable: C:/Games/REPLACE_ME/launcher.exe
+  games:
+  - name: 原神
+    arguments:
+    - --game=hk4e_cn
+  - name: 崩坏：星穹铁道
+    arguments:
+    - --game=hkrpg_cn
+  - name: 绝区零
+    arguments:
+    - --game=nap_cn
+  - name: 崩坏3
+    arguments:
+    - --game=bh3_cn
+    integrity:
+      root: C:/Games/REPLACE_ME/Honkai Impact 3rd Game
+      manifest: pkg_version
+      paths:
+      - BH3.exe
+      - UnityPlayer.dll
+      - BH3_Data/app.info
+      - BH3_Data/boot.config
+      - BH3_Data/globalgamemanagers
+      verify_hash: false
+  game_process_names:
+  - GenshinImpact.exe
+  - YuanShen.exe
+  - StarRail.exe
+  - HonkaiStarRail.exe
+  - ZenlessZoneZero.exe
+  - BH3.exe
+  ui:
+    window_title_regex: HoYoPlay|米哈游启动器|原神|星穹铁道|绝区零|崩坏3
+    allow_process_window_fallback: true
+    update_button_regex: ^(更新|立即更新|预下载|继续下载|下载更新|重启并更新|已暂停)$
+    ready_button_regex: ^(开始游戏|启动游戏|进入游戏)$
+    recognition_timeout_seconds: 30
+    startup_wait_seconds: 3
+    poll_seconds: 2
+    download_poll_seconds: 20
+    download_ocr_region:
+    - 0.55
+    - 0.55
+    - 1.0
+    - 1.0
+    timeout_minutes: 150
+- id: endfield
+  name: 鹰角启动器（终末地）
+  executable: C:/Games/REPLACE_ME/launcher.exe
+  game_process_names:
+  - Endfield.exe
+  - Endfield-Win64-Shipping.exe
+  ui:
+    window_title_regex: 鹰角启动器|GRYPHLINK|终末地|Endfield
+    ocr_fallback: true
+    ocr_min_confidence: 0.7
+    sliding_ocr:
+      enabled: true
+      grids:
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      overlap: 0.8
+      min_crop_width: 800
+      max_seconds: null
+    stall_timeout_seconds: 180
+    update_button_regex: ^(更新|立即更新|预下载|继续下载|下载更新|重启并更新)$
+    ready_button_regex: ^(开始游戏|启动游戏|进入游戏|Play)$
+    recognition_timeout_seconds: 20
+    startup_wait_seconds: 3
+    poll_seconds: 2
+    timeout_minutes: 150
+- id: wuthering-waves
+  name: 鸣潮
+  executable: C:/Games/REPLACE_ME/launcher.exe
+  game_process_names:
+  - Wuthering Waves.exe
+  - Client-Win64-Shipping.exe
+  ui:
+    window_title_regex: 鸣潮|Wuthering Waves
+    update_button_regex: ^(更新|立即更新|预下载|继续下载|下载更新|重启并更新)$
+    ready_button_regex: ^(开始游戏|启动游戏|进入游戏|Start)$
+    startup_wait_seconds: 12
+    poll_seconds: 12
+    timeout_minutes: 150
+- id: nte
+  name: 异环
+  executable: C:/Games/REPLACE_ME/NTELauncher.exe
+  game_process_names:
+  - HTGame.exe
+  - NTE-Win64-Shipping.exe
+  - NevernessToEverness.exe
+  ui:
+    window_title_regex: 异环|Neverness To Everness|NTE
+    update_button_regex: ^(更新|立即更新|预下载|继续下载|下载更新|重启并更新)$
+    ready_button_regex: ^(开始游戏|启动游戏|进入游戏|Start)$
+    startup_wait_seconds: 12
+    poll_seconds: 12
+    timeout_minutes: 150
+mumu:
+  enabled: true
+  name: MuMu 模拟器手游更新
+  manager_executable: C:/Games/REPLACE_ME/MuMuManager.exe
+  vm_index: 0
+  adb_path: C:/Games/REPLACE_ME/adb.exe
+  apk:
+    download_dir: downloads
+    state_file: logs/apk-download-state.json
+  startup_wait_seconds: 75
+  adb_wait_seconds: 90
+  shutdown_after_update: true
+  games:
+  - name: 蔚蓝档案
+    download_key: bluearchive
+    package: com.RoamingStar.BlueArchive
+  - name: 重返未来：1999
+    download_key: reverse1999
+    package: com.shenlan.m.reverse1999
+  - name: 植物大战僵尸2
+    download_key: pvz2
+    package: com.popcap.pvz2cthdbk
+  - name: 炽焰天穹
+    download_key: hbr
+    package: com.bilibili.heaven
+  - name: 明日方舟
+    download_key: arknights
+    package: com.hypergryph.arknights
+  - name: FGO
+    download_key: fgo
+    package: com.bilibili.fatego
+  - name: 崩坏3（APK 保留接口）
+    download_key: bh3
+    package: com.miHoYo.enterprise.NGHSoD
+    enabled: false

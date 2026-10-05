@@ -1,0 +1,222 @@
+# Copy to the corresponding .yaml file and configure your own paths.
+defaults:
+  launcher_context_texts:
+  - 启动器更新
+  - 更新启动器
+  - 发现新版本
+  - 检测到新版本
+  - 新版本可用
+  launcher_action_texts:
+  - 立即更新
+  - 更新启动器
+  - 确认更新
+  - 开始更新
+  - 重启并更新
+  - 重启启动器
+  - 立即重启
+  - 更新
+  - 确定
+  - 确认
+  - 继续
+  - 重试
+  - 完成
+  launcher_busy_texts:
+  - 正在更新启动器
+  - 启动器更新中
+  - 正在下载
+  - 下载中
+  - 正在安装
+  - 安装中
+  - 更新中
+  - 正在解压
+  - 解压中
+  updater_window_keywords: []
+  launcher_restart_cap: 3
+  launcher_quiet_seconds: 300
+  launcher_click_cap: 20
+  launcher_click_interval: 5
+  done_stable_rounds: 3
+  done_texts:
+  - 开始游戏
+  - 进入游戏
+  - 启动游戏
+  predownload_texts:
+  - 预下载
+  updating_texts:
+  - 更新中
+  - 下载中
+  - 正在更新
+  - 正在下载
+  - 解压中
+  - 安装中
+  - 下载资源
+  - 更新资源
+  retry_texts:
+  - 重试
+  - 确定
+  - 继续
+  verifying_texts:
+  - 校验
+  - 验证中
+  - 资源验证
+  update_exclude:
+  - 完成
+  merge_band_height_ratio: 0.06
+  merge_band_center_ratio: 0.05
+  merge_gap_ratio: 1.2
+  exact_neighbor_ratio: 3.0
+  boundary_group: true
+  anchor_recover: true
+plan:
+- vendor: mihoyo
+  game: zzz
+- vendor: mihoyo
+  game: genshin
+- vendor: mihoyo
+  game: sr
+- vendor: mihoyo
+  game: bh3
+- vendor: kuro
+- vendor: hypergryph
+- vendor: nte
+vendors:
+  mihoyo:
+    launcher_exe: C:/Games/REPLACE_ME/launcher.exe
+    window_keywords:
+    - 米哈游
+    - HoYoPlay
+    updater_processes:
+    - HYUpdater.exe
+    extra_processes:
+    - HYP.exe
+    - HYPHelper.exe
+    prefer_uia: false
+    click_updates: true
+    update_texts:
+    - 预下载
+    - 立即更新
+    - 更新游戏
+    - 更新
+    done_texts:
+    - 开始游戏
+    - 进入游戏
+    - 启动游戏
+    confirm_texts:
+    - 确认下载
+    - 开始下载
+    - 确认更新
+    resume_texts:
+    - 已暂停
+    - 继续下载
+    - 恢复下载
+    resume_click_cap: 3
+    cli_switch_arg: --game={biz}
+    games:
+      zzz:
+        biz: nap_cn
+        template: nap_cn.png
+        logo:
+        - 绝区零
+        - Zenless
+        not_logo:
+        - 原神
+        - Genshin
+      genshin:
+        biz: hk4e_cn
+        template: hk4e_cn.png
+        logo:
+        - 原神
+        - Genshin
+        not_logo: []
+      sr:
+        biz: hkrpg_cn
+        template: hkrpg_cn.png
+        logo:
+        - 星穹铁道
+        - 铁道
+        - StarRail
+        - Star Rail
+        not_logo:
+        - 崩坏
+      bh3:
+        biz: bh3_cn
+        template: bh3_cn.png
+        logo:
+        - 崩坏
+        - 坏
+        not_logo:
+        - 星穹
+        - 铁道
+        - starrail
+  kuro:
+    launcher_exe: C:/Games/REPLACE_ME/launcher.exe
+    window_keywords:
+    - 鸣潮
+    - Wuthering
+    updater_processes:
+    - launcher_updater.exe
+    prefer_uia: true
+    click_updates: true
+    update_texts:
+    - 立即更新
+    - 更新游戏
+    - 更新
+    done_texts:
+    - 开始游戏
+    - 进入游戏
+    - 启动游戏
+  hypergryph:
+    launcher_exe: C:/Games/REPLACE_ME/Launcher.exe
+    launch_args:
+    - --game=endfield
+    - --reason=4
+    window_keywords:
+    - 鹰角
+    - Hypergryph
+    updater_processes:
+    - Updater.exe
+    prefer_uia: false
+    click_updates: true
+    update_texts:
+    - 立即更新
+    - 更新游戏
+    - 更新
+    done_texts:
+    - 开始游戏
+    - 进入游戏
+    - 启动游戏
+  nte:
+    launcher_exe: C:/Games/REPLACE_ME/NTELauncher.exe
+    window_keywords:
+    - 异环
+    - NTE
+    - Neverness
+    updater_processes:
+    - NTEUpdate.exe
+    prefer_uia: false
+    click_updates: false
+    update_texts:
+    - 立即更新
+    - 更新游戏
+    - 更新
+    done_texts:
+    - 开始游戏
+    - 进入游戏
+    - 启动游戏
+    confirm_texts:
+    - 确认更新
+    - 开始更新
+    - 立即更新
+    - 更新启动器
+    - 重启并更新
+    - 重启启动器
+    - 立即重启
+    - 完成
+    - 确定
+    - 确认
+    - 继续
+    - 重试
+    - 知道了
+    observer_grace: 120
+    done_stable_rounds: 3
+    observer_confirm_cap: 20
