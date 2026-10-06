@@ -78,7 +78,8 @@ def notify_failures(failures: list) -> None:
     try:
         cfg = load_config()
     except Exception as exc:
-        log.warning("读取通知配置失败，跳过推送: %s", exc)
+        # YAML parse errors can include the source line containing a secret.
+        log.warning("读取通知配置失败，跳过推送（%s）", type(exc).__name__)
         return
     if not cfg.get("enabled"):
         if failures:
@@ -115,7 +116,8 @@ def notify_failures(failures: list) -> None:
             sent += 1
             log.info("Server酱推送成功: %s", msg["title"])
         except Exception as exc:
-            log.warning("Server酱推送失败，已落盘待重试: %s", exc)
+            # Network exceptions can contain the full URL, including SendKey.
+            log.warning("Server酱推送失败，已落盘待重试（%s）", type(exc).__name__)
             msg["next_after"] = now_ts + retry_after
             remain.append(msg)
     _save_pending(remain)
